@@ -1,5 +1,6 @@
 package com.example.rk_app
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
+import java.text.SimpleDateFormat
 
 class TrackListAdapter(val context: Context) :RecyclerView.Adapter<TrackListAdapter.ElementViewHolder>(){
     var data = listOf<DataListItem>()
@@ -32,10 +34,19 @@ class TrackListAdapter(val context: Context) :RecyclerView.Adapter<TrackListAdap
 
         var date : TextView = itemView.findViewById(R.id.date)
         var currency : TextView = itemView.findViewById(R.id.currency)
+        var price : TextView = itemView.findViewById(R.id.price)
+
 
         fun setData(item:DataListItem){
-            date.text = item.time.toString()
+            date.text = convertStampToDate(item.time)
+            price.text = item.close.toString()
             currency.text = item.currency
+        }
+
+        fun convertStampToDate(stamp:Int):String{
+            val sdf = SimpleDateFormat("yyyy-MM-dd")
+            val dateInst = java.util.Date(stamp.toLong()*1000)
+            return sdf.format(dateInst).toString()
         }
 
         companion object{

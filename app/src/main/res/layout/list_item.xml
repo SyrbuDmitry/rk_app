@@ -27,9 +27,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/currency"
-                android:layout_marginLeft="20dp"
+                android:id="@+id/price"
+                android:layout_marginStart="20dp"
                 android:layout_toRightOf="@+id/date"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/currency"
+                android:layout_marginStart="20dp"
+                android:layout_toRightOf="@+id/price"
                 />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
