@@ -1,10 +1,15 @@
 package com.example.rk_app
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -40,5 +45,15 @@ class MainActivity : AppCompatActivity() {
 //            currencyRequest()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun onLinkClick(view: View) {
+        openWebPage(getString(R.string.txt_link_link))
+    }
+
+    fun openWebPage(url: String) {
+        val webpage: Uri = Uri.parse(url)
+        val intent = Intent(Intent.ACTION_VIEW, webpage)
+        startActivity(intent)
     }
 }

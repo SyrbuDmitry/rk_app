@@ -14,7 +14,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:text="@string/defaultCrypto"
+        android:text="@string/default_crypto"
         android:textAlignment="center" />
 
     <androidx.recyclerview.widget.RecyclerView
