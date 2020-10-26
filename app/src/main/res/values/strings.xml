@@ -6,4 +6,8 @@
     <string name="txt_link">Read more</string>
     <string name="txt_link_link">https://crypto.info/</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_min">Min</string>
+    <string name="info_max">Max</string>
+    <string name="info_open">Open</string>
+    <string name="info_">Close</string>
 </resources>

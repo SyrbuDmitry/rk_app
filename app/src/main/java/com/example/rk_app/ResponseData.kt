@@ -1,6 +1,8 @@
 package com.example.rk_app
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
 data class ResponseData(
     val Response: String,
@@ -18,6 +20,7 @@ data class Data(
     @Json(name="Data") val DataList: List<DataListItem>
 )
 
+@Parcelize
 data class DataListItem(
     @Transient
     var currency : String = "",
@@ -30,4 +33,4 @@ data class DataListItem(
     val close:Double,
     val conversionType:String,
     val conversionSymbol:String
-)
+) : Parcelable

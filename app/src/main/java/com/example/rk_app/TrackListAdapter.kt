@@ -18,6 +18,8 @@ class TrackListAdapter(val context: Context) :RecyclerView.Adapter<TrackListAdap
             notifyDataSetChanged()
         }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElementViewHolder {
         return ElementViewHolder.from(parent)
     }
@@ -28,10 +30,8 @@ class TrackListAdapter(val context: Context) :RecyclerView.Adapter<TrackListAdap
         val item = data[position]
 
         holder.cv.setOnClickListener { v ->
-//            val args = Bundle()
-//            val articleJSON: String = articles!!.get(position).toString()
-//            args.putString(ArticleFragment_ARG_ARTICLE_JSON, articleJSON)
-            v.findNavController().navigate(R.id.action_trackListFragment_to_cryptoInfoFragment)
+            val args = CryptoInfoFragment.createBundle(item)
+            v.findNavController().navigate(R.id.action_trackListFragment_to_cryptoInfoFragment, args)
         }
 
         holder.setData(item)
