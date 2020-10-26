@@ -1,19 +1,24 @@
 package com.example.rk_app
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class TrackListFragment : Fragment() {
+class TrackListFragment : Fragment(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<TrackListAdapter.ElementViewHolder>
@@ -27,21 +32,30 @@ class TrackListFragment : Fragment() {
 
         viewAdapter = TrackListAdapter(requireContext())
 
-        crypto = "BTC"
-        money = "USD"
-        limit = "15"
+        val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        prefs.registerOnSharedPreferenceChangeListener(this)
+        crypto = prefs.getString("crypto_type", "BTC")!!
+        money = prefs.getString("currency_type", "USD")!!
+        limit = prefs.getString("days_count", "10")!!
 
         getCurrency()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id: Int = item.itemId
-        if (id==R.id.refresh) {
-            crypto = requireView().findViewById<EditText>(R.id.currencySelected).text.toString()
-            println(crypto)
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        Log.i("SETTINGS", "onSharedPreferenceChanged()")
+        if (key == "days_count") {
+            limit = sharedPreferences!!.getString(key, limit)!!
+            Log.i("SETTINGS", "limit: $limit")
+            getCurrency()
+        } else if (key == "currency_type") {
+            money = sharedPreferences!!.getString(key, money)!!
+            Log.i("SETTINGS", "money: $money")
+            getCurrency()
+        } else if (key == "crypto_type") {
+            crypto = sharedPreferences!!.getString(key, crypto)!!
+            Log.i("SETTINGS", "crypto: $crypto")
             getCurrency()
         }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateView(

@@ -10,4 +10,12 @@
     <string name="info_max">Max</string>
     <string name="info_open">Open</string>
     <string name="info_">Close</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string name="time_header">Period</string>
+    <string name="currency_header">Currency</string>
+
+    <string name="time_days_title">Days</string>
+    <string name="currency_crypto_title">Crypto</string>
+    <string name="currency_currency_title">Money</string>
 </resources>

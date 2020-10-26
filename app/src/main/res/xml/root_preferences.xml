@@ -1,0 +1,31 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<PreferenceCategory app:title="@string/time_header">
+
+    <EditTextPreference
+        app:key="days_count"
+        app:title="@string/time_days_title"
+        app:defaultValue="10"
+        app:useSimpleSummaryProvider="true" />
+
+</PreferenceCategory>
+
+<PreferenceCategory app:title="@string/currency_header">
+
+    <ListPreference
+        app:key="currency_type"
+        app:title="@string/currency_currency_title"
+        app:entries="@array/currency_entries"
+        app:entryValues="@array/currency_values"
+        app:defaultValue="usd"
+        app:useSimpleSummaryProvider="true"/>
+
+    <EditTextPreference
+        app:key="crypto_type"
+        app:title="@string/currency_crypto_title"
+        app:defaultValue="BTC"
+        app:useSimpleSummaryProvider="true" />
+
+</PreferenceCategory>
+
+</PreferenceScreen>
