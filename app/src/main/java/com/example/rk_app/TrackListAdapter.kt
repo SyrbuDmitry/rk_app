@@ -1,13 +1,14 @@
 package com.example.rk_app
 
-import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import android.content.Context
 import java.text.SimpleDateFormat
 
 class TrackListAdapter(val context: Context) :RecyclerView.Adapter<TrackListAdapter.ElementViewHolder>(){
@@ -25,6 +26,14 @@ class TrackListAdapter(val context: Context) :RecyclerView.Adapter<TrackListAdap
 
     override fun onBindViewHolder(holder: ElementViewHolder, position: Int) {
         val item = data[position]
+
+        holder.cv.setOnClickListener { v ->
+//            val args = Bundle()
+//            val articleJSON: String = articles!!.get(position).toString()
+//            args.putString(ArticleFragment_ARG_ARTICLE_JSON, articleJSON)
+            v.findNavController().navigate(R.id.action_trackListFragment_to_cryptoInfoFragment)
+        }
+
         holder.setData(item)
     }
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/trackListFragment">
+
+    <fragment
+        android:id="@+id/trackListFragment"
+        android:name="com.example.rk_app.TrackListFragment"
+        android:label="track_list_fragment"
+        tools:layout="@layout/fragment_track_list">
+        <action
+            android:id="@+id/action_trackListFragment_to_cryptoInfoFragment"
+            app:destination="@id/cryptoInfoFragment">
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/cryptoInfoFragment"
+        android:name="com.example.rk_app.CryptoInfoFragment"
+        android:label="crypto_info_fragment"
+        tools:layout="@layout/fragment_crypto_info">
+    </fragment>
+
+</navigation>
